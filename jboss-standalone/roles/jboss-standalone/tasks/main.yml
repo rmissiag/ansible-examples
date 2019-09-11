@@ -6,8 +6,6 @@
   with_items:
    - unzip
    - java-1.8.0-openjdk
-   - libselinux-python
-   - libsemanage-python
 
 - name: Download JBoss from jboss.org
   get_url:
