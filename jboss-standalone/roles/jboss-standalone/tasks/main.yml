@@ -20,10 +20,6 @@
     src: /opt/jboss-as-7.1.1.Final.zip
     creates: /usr/share/jboss-as
     copy: no
-- name: Atualiza jboss-modules.jar
-  copy:
-    src: files/jboss-modules.jar
-    dest: /usr/share/jboss-as-7.1.1.Final/jboss-modules.jar
     
   # Rename the dir to avoid encoding the version in the init script
 - name: Rename install directory
@@ -31,6 +27,11 @@
   args:
     chdir: /usr/share 
     creates: /usr/share/jboss-as
+    
+- name: Atualiza jboss-modules.jar
+  copy:
+    src: files/jboss-modules.jar
+    dest: /usr/share/jboss-as/jboss-modules.jar
 
 - name: Copying standalone.xml configuration file
   template:
