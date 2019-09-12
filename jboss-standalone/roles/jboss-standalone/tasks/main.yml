@@ -5,7 +5,9 @@
     state: present
   with_items:
    - unzip
-   - java-1.8.0-openjdk
+   - java-1.7.0-openjdk
+   - libselinux-python
+   - libsemanage-python
 
 - name: Download JBoss from jboss.org
   get_url:
@@ -18,7 +20,11 @@
     src: /opt/jboss-as-7.1.1.Final.zip
     creates: /usr/share/jboss-as
     copy: no
-
+- name: Atualiza jboss-modules.jar
+  copy:
+    src: files/jboss-modules.jar
+    dest: /usr/share/jboss-as/jboss-modules.jar
+    
   # Rename the dir to avoid encoding the version in the init script
 - name: Rename install directory
   command: /bin/mv jboss-as-7.1.1.Final jboss-as 
